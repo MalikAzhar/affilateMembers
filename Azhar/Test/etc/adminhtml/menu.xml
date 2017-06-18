@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+	    <add 
+	    	id="Azhar_Test::affiliate_members" 
+	    	title="Affiliate Members" 
+	    	module="Azhar_Test" 
+	    	sortOrder="12" 
+	    	parent="Magento_CatalogRule::promo" 
+	    	action="affiliates/index/index" 
+	    	resource="Azhar_Test::affiliate_members"/>
+    </menu>
+</config>

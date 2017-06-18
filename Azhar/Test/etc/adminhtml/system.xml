@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+ 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/system_file.xsd">
+    <system>
+        <section id="requests" translate="label" sortOrder="301" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Request</label>
+            <tab>sales</tab>
+            <resource>Azhar_Test::system_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                
+                <field id="send_email_to_admin" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Email to Admin</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="requests/general/enable">1</field>
+                    </depends>
+                </field>
+
+                <field 
+                    id="admin_email_template" 
+                    translate="label" 
+                    type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Admin Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="requests/general/enable">1</field>
+                        <field id="requests/general/send_email_to_admin">1</field>
+                    </depends>
+                </field>
+
+                <field id="admin_contact_information" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Admin Notification To</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                    <comment>Admin notifications will be sent to selected contact, see General > Store Email Addresses also</comment>
+                    <depends>
+                        <field id="requests/general/enable">1</field>
+                        <field id="requests/general/send_email_to_admin">1</field>
+                    </depends>
+                </field>
+
+                <field id="send_email_to_customer" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Email to Customer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="requests/general/enable">1</field>
+                    </depends>
+                </field>
+
+                <field 
+                    id="customer_email_template" 
+                    translate="label" 
+                    type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="requests/general/enable">1</field>
+                        <field id="requests/general/send_email_to_customer">1</field>
+                    </depends>
+                </field>
+
+                <field id="sender" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                    <comment>Notifications will be sent by selected sender, see General > Store Email Addresses also</comment>
+                    <depends>
+                        <field id="requests/general/enable">1</field>
+                    </depends>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>
